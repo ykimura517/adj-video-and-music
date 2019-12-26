@@ -1,0 +1,29 @@
+#sound volume
+ffmpeg -i movie.mp4 -vcodec copy -af "volume=5.5dB" movie_volumed.mp4
+ffmpeg -i music.mp3 -vcodec copy -af "volume=-19dB" music_volumed.mp3
+
+ffmpeg -i bgm.mp3 -vcodec copy -af "volume=-21dB" bgm2.mp3
+
+#concat music
+ffmpeg -i concated.mp3 -i concated.mp3 -filter_complex "concat=n=2:v=0:a=1" concated2.mp3
+
+#cut
+ffmpeg -ss [kaisi] -i [douga] -t[秒数] [syuturyoku]
+ffmpeg -ss 0 -i longBGM.mp3 -t 1358 bgm.mp3
+
+
+ffmpeg -i output.mp4 -i output-cl.mp3 -c:v copy -c:a aac -map 0:v:0 -map 1:a:0 output2.mp4
+
+ffmpeg -i output.mp4 -i output-cl.mp3 output2.mp4 -y
+
+
+file path
+file path
+
+流れ
+0.サムネ作っておく
+1. 動画の前後のいらない部分をカットする
+2.動画の音量調節と、BGMの長さ調整（movie-vol-and-music-cut.py）
+3.動画+BGM+最後の宣伝結合（shotcut）
+4.niconico用サムネのためにサムネを動画にする(thumnail.py--未完成)
+5.ニコニコ用動画作成（3の動画+4の動画ーーshotcut）
